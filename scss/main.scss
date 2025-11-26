@@ -36,59 +36,257 @@ body {
 .shape {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
+    opacity: 0.6;
     transition: opacity 0.3s ease;
+    will-change: transform, filter;
 
     &--1 {
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(112, 184, 255, 0.6) 0%, rgba(59, 158, 255, 0.3) 50%, transparent 100%);
-        top: -200px;
-        right: -100px;
-        animation: float 20s ease-in-out infinite;
+        width: 50rem;
+        height: 50rem;
+        background: radial-gradient(circle, rgba(112, 184, 255, 0.8) 0%, rgba(59, 158, 255, 0.5) 50%, transparent 100%);
+        top: -20rem;
+        left: -10rem;
+        filter: blur(2.5rem);
+        animation: floatShape1 12s ease-in-out infinite, blurShape1 8s ease-in-out infinite;
 
         .light-mode & {
-            background: radial-gradient(circle, rgba(0, 144, 255, 0.4) 0%, rgba(5, 136, 240, 0.2) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(0, 144, 255, 0.6) 0%, rgba(5, 136, 240, 0.4) 50%, transparent 100%);
         }
     }
 
     &--2 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(59, 158, 255, 0.5) 0%, rgba(194, 230, 255, 0.3) 50%, transparent 100%);
-        bottom: -150px;
-        left: -100px;
-        animation: float 25s ease-in-out infinite reverse;
+        width: 40rem;
+        height: 40rem;
+        background: radial-gradient(circle, rgba(59, 158, 255, 0.7) 0%, rgba(194, 230, 255, 0.5) 50%, transparent 100%);
+        bottom: -15rem;
+        left: -10rem;
+        filter: blur(2.5rem);
+        animation: floatShape2 14s ease-in-out infinite, blurShape2 10s ease-in-out infinite;
 
         .light-mode & {
-            background: radial-gradient(circle, rgba(5, 136, 240, 0.3) 0%, rgba(17, 50, 100, 0.2) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(5, 136, 240, 0.5) 0%, rgba(17, 50, 100, 0.3) 50%, transparent 100%);
         }
     }
 
     &--3 {
-        width: 350px;
-        height: 350px;
-        background: radial-gradient(circle, rgba(194, 230, 255, 0.4) 0%, rgba(112, 184, 255, 0.2) 50%, transparent 100%);
+        width: 35rem;
+        height: 35rem;
+        background: radial-gradient(circle, rgba(194, 230, 255, 0.6) 0%, rgba(112, 184, 255, 0.4) 50%, transparent 100%);
         top: 50%;
         left: 50%;
-        animation: float 30s ease-in-out infinite;
+        filter: blur(2.5rem);
+        animation: floatShape3 16s ease-in-out infinite, blurShape3 9s ease-in-out infinite;
 
         .light-mode & {
-            background: radial-gradient(circle, rgba(0, 144, 255, 0.3) 0%, rgba(13, 116, 206, 0.15) 50%, transparent 100%);
+            background: radial-gradient(circle, rgba(0, 144, 255, 0.5) 0%, rgba(13, 116, 206, 0.3) 50%, transparent 100%);
         }
+    }
+
+    &--4 {
+        width: 45rem;
+        height: 45rem;
+        background: radial-gradient(circle, rgba(112, 184, 255, 0.7) 0%, rgba(59, 158, 255, 0.4) 50%, transparent 100%);
+        top: -15rem;
+        right: -8rem;
+        filter: blur(2.5rem);
+        animation: floatShape4 13s ease-in-out infinite, blurShape4 11s ease-in-out infinite;
+
+        .light-mode & {
+            background: radial-gradient(circle, rgba(0, 144, 255, 0.5) 0%, rgba(5, 136, 240, 0.3) 50%, transparent 100%);
+        }
+    }
+
+    &--5 {
+        width: 38rem;
+        height: 38rem;
+        background: radial-gradient(circle, rgba(59, 158, 255, 0.6) 0%, rgba(194, 230, 255, 0.4) 50%, transparent 100%);
+        bottom: 20%;
+        right: 15%;
+        filter: blur(2.5rem);
+        animation: floatShape5 15s ease-in-out infinite, blurShape5 7s ease-in-out infinite;
+
+        .light-mode & {
+            background: radial-gradient(circle, rgba(5, 136, 240, 0.4) 0%, rgba(17, 50, 100, 0.25) 50%, transparent 100%);
+        }
+    }
+
+    // Masquer certaines shapes sur mobile et tablette
+    // Mobile : afficher seulement shape--1 et shape--2 (2 shapes)
+    // Par défaut, masquer shape--3, shape--4 et shape--5
+    &--3,
+    &--4,
+    &--5 {
+        display: none;
     }
 }
 
-@keyframes float {
+// Animations fluides avec mouvement léger pour les formes lumineuses
+@keyframes floatShape1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(8.5rem, -6.5rem) scale(1.05);
+    }
+    50% {
+        transform: translate(4.5rem, -10rem) scale(0.95);
+    }
+    75% {
+        transform: translate(-6rem, -6.5rem) scale(1.03);
+    }
+}
+
+@keyframes floatShape2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-8rem, 6rem) scale(0.96);
+    }
+    50% {
+        transform: translate(-10rem, 8.5rem) scale(1.04);
+    }
+    75% {
+        transform: translate(-6rem, 7.5rem) scale(0.98);
+    }
+}
+
+@keyframes floatShape3 {
     0%, 100% {
         transform: translate(-50%, -50%) scale(1);
     }
-    33% {
-        transform: translate(calc(-50% + 30px), calc(-50% - 30px)) scale(1.1);
+    20% {
+        transform: translate(calc(-50% + 6rem), calc(-50% - 5rem)) scale(1.03);
     }
-    66% {
-        transform: translate(calc(-50% - 20px), calc(-50% + 20px)) scale(0.9);
+    40% {
+        transform: translate(calc(-50% + 4rem), calc(-50% - 7.5rem)) scale(0.94);
+    }
+    60% {
+        transform: translate(calc(-50% - 5rem), calc(-50% - 6rem)) scale(1.02);
+    }
+    80% {
+        transform: translate(calc(-50% - 3rem), calc(-50% - 4rem)) scale(0.98);
+    }
+}
+
+@keyframes floatShape4 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    30% {
+        transform: translate(7rem, 5rem) scale(1.04);
+    }
+    50% {
+        transform: translate(4rem, 8rem) scale(0.96);
+    }
+    70% {
+        transform: translate(-5rem, 6rem) scale(1.02);
+    }
+}
+
+@keyframes floatShape5 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-7rem, -5rem) scale(0.97);
+    }
+    50% {
+        transform: translate(-8.5rem, -8rem) scale(1.04);
+    }
+    75% {
+        transform: translate(-6rem, -6rem) scale(0.99);
+    }
+}
+
+// Animations de variation de flou
+@keyframes blurShape1 {
+    0%, 100% {
+        filter: blur(2.5rem);
+    }
+    50% {
+        filter: blur(3rem);
+    }
+}
+
+@keyframes blurShape2 {
+    0%, 100% {
+        filter: blur(2.5rem);
+    }
+    50% {
+        filter: blur(2rem);
+    }
+}
+
+@keyframes blurShape3 {
+    0%, 100% {
+        filter: blur(2.5rem);
+    }
+    50% {
+        filter: blur(2.8rem);
+    }
+}
+
+@keyframes blurShape4 {
+    0%, 100% {
+        filter: blur(2.5rem);
+    }
+    50% {
+        filter: blur(2.2rem);
+    }
+}
+
+@keyframes blurShape5 {
+    0%, 100% {
+        filter: blur(2.5rem);
+    }
+    50% {
+        filter: blur(3.2rem);
+    }
+}
+
+// Animations d'apparition
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// Classes d'animation
+.animate-on-scroll {
+    opacity: 0;
+
+    &.fade-in-up {
+        transform: translateY(2rem);
+    }
+
+    &.fade-in {
+        transform: none;
+    }
+
+    &.animated {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeInUp 0.7s ease forwards;
+    }
+
+    &.animated-fade {
+        opacity: 1;
+        animation: fadeIn 0.7s ease forwards;
     }
 }
 
@@ -98,7 +296,7 @@ body {
     z-index: 10;
     padding: 1rem 2rem;
     background-color: v.$ui-element-background-color-dark;
-    border-bottom: 1px solid v.$subtle-borders-and-separators-color-dark;
+    border-bottom: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 
     .light-mode & {
@@ -107,11 +305,67 @@ body {
     }
 
     &__container {
-        max-width: 1440px;
+        max-width: 144rem;
         margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
     }
 
     &__nav {
+        display: none;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    &__nav-link {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: v.$high-contrast-text-color-dark;
+        text-decoration: none;
+        padding: 0.8rem 1.2rem;
+        border-radius: 0.8rem;
+        transition: all 0.3s ease;
+        position: relative;
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+        }
+
+        &:hover {
+            color: v.$solid-backgrounds-color-dark;
+            background-color: v.$hovered-ui-element-background-color-dark;
+
+            .light-mode & {
+                color: v.$solid-backgrounds-color-light;
+                background-color: v.$hovered-ui-element-background-color-light;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0.4rem;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 0.2rem;
+            background-color: v.$solid-backgrounds-color-dark;
+            transition: transform 0.3s ease;
+            border-radius: 0.1rem;
+
+            .light-mode & {
+                background-color: v.$solid-backgrounds-color-light;
+            }
+        }
+
+        &:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+    }
+
+    &__social {
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -122,8 +376,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 4rem;
+        height: 4rem;
         color: v.$high-contrast-text-color-dark;
         transition: color 0.3s ease, transform 0.2s ease;
         cursor: pointer;
@@ -142,8 +396,8 @@ body {
         }
 
         svg {
-            width: 24px;
-            height: 24px;
+            width: 2.4rem;
+            height: 2.4rem;
         }
     }
 
@@ -188,9 +442,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: calc(100vh - 80px);
+        min-height: calc(100vh - 8rem);
     padding: 2rem;
-    max-width: 1440px;
+    max-width: 144rem;
     margin: 0 auto;
 
     &__content {
@@ -268,6 +522,7 @@ body {
         font-weight: 400;
         color: v.$low-contrast-text-color-dark;
         line-height: 1.6;
+        margin-bottom: 2rem;
         transition: color 0.3s ease;
 
         .light-mode & {
@@ -275,10 +530,69 @@ body {
         }
     }
 
+    &__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2rem;
+        background-color: v.$ui-element-background-color-dark;
+        border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+        border-radius: 1.2rem;
+        color: v.$high-contrast-text-color-dark;
+        font-size: 1.6rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        .light-mode & {
+            background-color: v.$ui-element-background-color-light;
+            border-color: v.$subtle-borders-and-separators-color-light;
+            color: v.$high-contrast-text-color-light;
+        }
+
+        &:hover {
+            transform: translateY(-0.4rem);
+            border-color: v.$ui-element-border-and-focus-rings-color-dark;
+            background-color: v.$hovered-ui-element-background-color-dark;
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
+
+            .light-mode & {
+                border-color: v.$ui-element-border-and-focus-rings-color-light;
+                background-color: v.$hovered-ui-element-background-color-light;
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
+            }
+        }
+
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        &:hover svg {
+            transform: scale(1.1);
+        }
+
+        span {
+            white-space: nowrap;
+        }
+    }
+
     &__image-wrapper {
         flex-shrink: 0;
-        width: clamp(200px, 25vw, 300px);
-        height: clamp(200px, 25vw, 300px);
+        width: clamp(20rem, 25vw, 30rem);
+        height: clamp(20rem, 25vw, 30rem);
         position: relative;
         margin: 0 auto;
     }
@@ -288,17 +602,17 @@ body {
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
-        border: 4px solid transparent;
+        border: 0.4rem solid transparent;
         background: linear-gradient(135deg, #70B8FF, #3B9EFF, #C2E6FF) padding-box,
         linear-gradient(135deg, #70B8FF, #3B9EFF, #C2E6FF) border-box;
-        padding: 4px;
-        box-shadow: 0 10px 30px rgba(112, 184, 255, 0.3);
+        padding: 0.4rem;
+        box-shadow: 0 1rem 3rem rgba(112, 184, 255, 0.3);
         transition: box-shadow 0.3s ease;
 
         .light-mode & {
             background: linear-gradient(135deg, #0090FF, #0588F0, #113264) padding-box,
             linear-gradient(135deg, #0090FF, #0588F0, #113264) border-box;
-            box-shadow: 0 10px 30px rgba(0, 144, 255, 0.2);
+            box-shadow: 0 1rem 3rem rgba(0, 144, 255, 0.2);
         }
     }
 }
@@ -308,7 +622,7 @@ body {
     position: relative;
     z-index: 10;
     padding: 4rem 2rem;
-    max-width: 1440px;
+    max-width: 144rem;
     margin: 0 auto;
 
     &__container {
@@ -340,8 +654,8 @@ body {
         gap: 0.5rem;
         background-color: v.$ui-element-background-color-dark;
         padding: 0.25rem;
-        border-radius: 12px;
-        border: 1px solid v.$subtle-borders-and-separators-color-dark;
+        border-radius: 1.2rem;
+        border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
         transition: background-color 0.3s ease, border-color 0.3s ease;
 
         .light-mode & {
@@ -357,7 +671,7 @@ body {
         color: v.$low-contrast-text-color-dark;
         font-size: 1.8rem;
         font-weight: 500;
-        border-radius: 8px;
+        border-radius: 0.8rem;
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
@@ -369,12 +683,12 @@ body {
         &--active {
             background-color: v.$solid-backgrounds-color-dark;
             color: v.$high-contrast-text-color-dark;
-            box-shadow: 0 2px 8px rgba(0, 144, 255, 0.3);
+            box-shadow: 0 0.2rem 0.8rem rgba(0, 144, 255, 0.3);
 
             .light-mode & {
                 background-color: v.$solid-backgrounds-color-light;
                 color: v.$high-contrast-text-color-light;
-                box-shadow: 0 2px 8px rgba(0, 144, 255, 0.2);
+                box-shadow: 0 0.2rem 0.8rem rgba(0, 144, 255, 0.2);
             }
         }
 
@@ -391,7 +705,7 @@ body {
 
     &__content {
         position: relative;
-        min-height: 300px;
+        min-height: 30rem;
     }
 
     &__list {
@@ -399,7 +713,7 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(2rem);
         transition: opacity 0.3s ease, transform 0.3s ease;
         position: absolute;
         width: 100%;
@@ -416,8 +730,8 @@ body {
 
 .skill-item {
     background-color: v.$ui-element-background-color-dark;
-    border: 1px solid v.$subtle-borders-and-separators-color-dark;
-    border-radius: 12px;
+    border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+    border-radius: 1.2rem;
     padding: 1.25rem 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
@@ -433,13 +747,13 @@ body {
     }
 
     &:hover {
-        transform: translateY(-4px);
+        transform: translateY(-0.4rem);
         border-color: v.$ui-element-border-and-focus-rings-color-dark;
-        box-shadow: 0 4px 12px rgba(0, 144, 255, 0.2);
+        box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
 
         .light-mode & {
             border-color: v.$ui-element-border-and-focus-rings-color-light;
-            box-shadow: 0 4px 12px rgba(0, 144, 255, 0.15);
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
         }
 
         .skill-item__icon {
@@ -448,8 +762,8 @@ body {
     }
 
     &__icon {
-        width: 48px;
-        height: 48px;
+        width: 4.8rem;
+        height: 4.8rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -527,12 +841,204 @@ body {
     }
 }
 
+// Journey section (Parcours)
+.journey {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 2rem;
+    max-width: 144rem;
+    margin: 0 auto;
+
+    &__container {
+        width: 100%;
+    }
+
+    &__title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: v.$high-contrast-text-color-dark;
+        text-align: center;
+        margin-bottom: 4rem;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+        }
+    }
+
+    &__timeline {
+        position: relative;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding-left: 3rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            width: 0.2rem;
+            background: linear-gradient(180deg, 
+                v.$ui-element-border-and-focus-rings-color-dark 0%, 
+                rgba(0, 144, 255, 0.3) 50%,
+                v.$ui-element-border-and-focus-rings-color-dark 100%);
+            transition: background 0.3s ease;
+
+            .light-mode & {
+                background: linear-gradient(180deg, 
+                    v.$ui-element-border-and-focus-rings-color-light 0%, 
+                    rgba(0, 144, 255, 0.4) 50%,
+                    v.$ui-element-border-and-focus-rings-color-light 100%);
+            }
+        }
+
+        &::after {
+            content: '▼';
+            position: absolute;
+            left: 1.2rem;
+            bottom: -2rem;
+            font-size: 1.6rem;
+            color: v.$ui-element-border-and-focus-rings-color-dark;
+            animation: bounce 2s infinite;
+            transition: color 0.3s ease;
+
+            .light-mode & {
+                color: v.$ui-element-border-and-focus-rings-color-light;
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+        margin-bottom: 4rem;
+        padding-left: 4rem;
+
+        &--last {
+            margin-bottom: 0;
+        }
+    }
+
+    &__marker {
+        position: absolute;
+        left: -1.5rem;
+        top: 0.5rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        background-color: v.$ui-element-background-color-dark;
+        border: 0.3rem solid v.$ui-element-border-and-focus-rings-color-dark;
+        box-shadow: 0 0 0 0.4rem v.$ui-element-background-color-dark;
+        transition: all 0.3s ease;
+        z-index: 2;
+
+        .light-mode & {
+            background-color: v.$ui-element-background-color-light;
+            border-color: v.$ui-element-border-and-focus-rings-color-light;
+            box-shadow: 0 0 0 0.4rem v.$ui-element-background-color-light;
+        }
+
+        .journey__item:hover & {
+            transform: scale(1.3);
+            border-color: v.$solid-backgrounds-color-dark;
+            box-shadow: 0 0 0 0.4rem v.$ui-element-background-color-dark, 
+                        0 0 1.2rem rgba(0, 144, 255, 0.5);
+
+            .light-mode & {
+                border-color: v.$solid-backgrounds-color-light;
+                box-shadow: 0 0 0 0.4rem v.$ui-element-background-color-light, 
+                            0 0 1.2rem rgba(0, 144, 255, 0.4);
+            }
+        }
+    }
+
+    &__content {
+        background-color: v.$ui-element-background-color-dark;
+        border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+        border-radius: 1.2rem;
+        padding: 2rem;
+        transition: all 0.3s ease;
+
+        .light-mode & {
+            background-color: v.$ui-element-background-color-light;
+            border-color: v.$subtle-borders-and-separators-color-light;
+        }
+
+        .journey__item:hover & {
+            transform: translateX(0.5rem);
+            border-color: v.$ui-element-border-and-focus-rings-color-dark;
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
+
+            .light-mode & {
+                border-color: v.$ui-element-border-and-focus-rings-color-light;
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.1);
+            }
+        }
+    }
+
+    &__date {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: v.$ui-element-border-and-focus-rings-color-dark;
+        margin-bottom: 0.8rem;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$ui-element-border-and-focus-rings-color-light;
+        }
+    }
+
+    &__title-item {
+        font-size: 2rem;
+        font-weight: 600;
+        color: v.$high-contrast-text-color-dark;
+        margin-bottom: 1rem;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+        }
+    }
+
+    &__description {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        color: v.$low-contrast-text-color-dark;
+        margin-bottom: 1rem;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$low-contrast-text-color-light;
+        }
+    }
+
+    &__location {
+        font-size: 1.4rem;
+        color: v.$low-contrast-text-color-dark;
+        font-style: italic;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$low-contrast-text-color-light;
+        }
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0.5rem);
+    }
+}
+
 // Projects section
 .projects {
     position: relative;
     z-index: 10;
     padding: 4rem 2rem;
-    max-width: 1440px;
+    max-width: 144rem;
     margin: 0 auto;
 
     &__container {
@@ -561,8 +1067,8 @@ body {
 
 .project-card {
     background-color: v.$ui-element-background-color-dark;
-    border: 1px solid v.$subtle-borders-and-separators-color-dark;
-    border-radius: 16px;
+    border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+        border-radius: 1.6rem;
     overflow: hidden;
     transition: all 0.3s ease;
     display: flex;
@@ -574,19 +1080,19 @@ body {
     }
 
     &:hover {
-        transform: translateY(-8px);
+        transform: translateY(-0.8rem);
         border-color: v.$ui-element-border-and-focus-rings-color-dark;
-        box-shadow: 0 8px 24px rgba(0, 144, 255, 0.25);
+        box-shadow: 0 0.8rem 2.4rem rgba(0, 144, 255, 0.25);
 
         .light-mode & {
             border-color: v.$ui-element-border-and-focus-rings-color-light;
-            box-shadow: 0 8px 24px rgba(0, 144, 255, 0.2);
+            box-shadow: 0 0.8rem 2.4rem rgba(0, 144, 255, 0.2);
         }
     }
 
     &__image-wrapper {
         width: 100%;
-        height: 200px;
+        height: 20rem;
         overflow: hidden;
         background-color: v.$subtle-background-color-dark;
         position: relative;
@@ -652,7 +1158,7 @@ body {
         padding: 0.5rem 1rem;
         background-color: v.$solid-backgrounds-color-dark;
         color: v.$high-contrast-text-color-dark;
-        border-radius: 8px;
+        border-radius: 0.8rem;
         font-size: 1.4rem;
         font-weight: 500;
         transition: all 0.3s ease;
@@ -671,9 +1177,492 @@ body {
             }
         }
     }
+
+    &--clickable {
+        cursor: pointer;
+    }
+
+    &__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+
+        .light-mode & {
+            border-top-color: v.$subtle-borders-and-separators-color-light;
+        }
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 1.6rem;
+        background-color: v.$solid-backgrounds-color-dark;
+        color: v.$high-contrast-text-color-dark;
+        border: none;
+        border-radius: 0.8rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        white-space: nowrap;
+
+        .light-mode & {
+            background-color: v.$solid-backgrounds-color-light;
+            color: v.$high-contrast-text-color-light;
+        }
+
+        &:hover {
+            background-color: v.$hovered-solid-backgrounds-color-dark;
+            transform: translateY(-0.2rem);
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.3);
+
+            .light-mode & {
+                background-color: v.$hovered-solid-backgrounds-color-light;
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
+            }
+        }
+    }
+}
+
+// Project Modal
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &--active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(0.4rem);
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1001;
+        width: 90%;
+        max-width: 120rem;
+        max-height: 90vh;
+        background-color: v.$ui-element-background-color-dark;
+        border-radius: 1.6rem;
+        overflow: hidden;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+
+        .light-mode & {
+            background-color: v.$ui-element-background-color-light;
+        }
+
+        .project-modal--active & {
+            transform: scale(1);
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1002;
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 50%;
+        color: v.$high-contrast-text-color-dark;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(0.4rem);
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+
+            .light-mode & {
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+}
+
+// Project Slider
+.project-slider {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &__container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    &__track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
+
+    &__slide {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        padding: 2rem;
+        box-sizing: border-box;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: 0.8rem;
+            background-color: v.$subtle-background-color-dark;
+
+            .light-mode & {
+                background-color: v.$subtle-background-color-light;
+            }
+        }
+    }
+
+    &__prev,
+    &__next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1002;
+        width: 4.8rem;
+        height: 4.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 50%;
+        color: v.$high-contrast-text-color-dark;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(0.4rem);
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: translateY(-50%) scale(1.1);
+
+            .light-mode & {
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+
+    &__prev {
+        left: 1rem;
+    }
+
+    &__next {
+        right: 1rem;
+    }
+
+    &__info {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1002;
+    }
+
+    &__counter {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: v.$high-contrast-text-color-dark;
+        padding: 0.8rem 1.6rem;
+        border-radius: 2rem;
+        font-size: 1.6rem;
+        font-weight: 500;
+        backdrop-filter: blur(0.4rem);
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    }
+}
+
+// Footer
+.footer {
+    position: relative;
+    z-index: 10;
+    padding: 3rem 2rem;
+    background-color: v.$ui-element-background-color-dark;
+    border-top: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+    margin-top: 4rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    .light-mode & {
+        background-color: v.$ui-element-background-color-light;
+        border-top-color: v.$subtle-borders-and-separators-color-light;
+    }
+
+    &__container {
+        max-width: 144rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    &__copyright {
+        font-size: 1.6rem;
+        color: v.$low-contrast-text-color-dark;
+        margin: 0;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$low-contrast-text-color-light;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__link {
+        font-size: 1.6rem;
+        color: v.$low-contrast-text-color-dark;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+
+        .light-mode & {
+            color: v.$low-contrast-text-color-light;
+        }
+
+        &:hover {
+            color: v.$solid-backgrounds-color-dark;
+
+            .light-mode & {
+                color: v.$solid-backgrounds-color-light;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -0.4rem;
+                left: 0;
+                width: 100%;
+                height: 0.2rem;
+                background-color: v.$solid-backgrounds-color-dark;
+                transition: background-color 0.3s ease;
+
+                .light-mode & {
+                    background-color: v.$solid-backgrounds-color-light;
+                }
+            }
+        }
+    }
+}
+
+// Legal pages
+.legal-page {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 2rem;
+    max-width: 144rem;
+    margin: 0 auto;
+    min-height: calc(100vh - 8rem);
+
+    &__container {
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-size: 3.6rem;
+        font-weight: 700;
+        color: v.$high-contrast-text-color-dark;
+        margin-bottom: 3rem;
+        text-align: center;
+        transition: color 0.3s ease;
+
+        .light-mode & {
+            color: v.$high-contrast-text-color-light;
+        }
+    }
+
+    &__content {
+        background-color: v.$ui-element-background-color-dark;
+        border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+        border-radius: 1.6rem;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+
+        .light-mode & {
+            background-color: v.$ui-element-background-color-light;
+            border-color: v.$subtle-borders-and-separators-color-light;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: v.$high-contrast-text-color-dark;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+
+            .light-mode & {
+                color: v.$high-contrast-text-color-light;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: v.$low-contrast-text-color-dark;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+
+            .light-mode & {
+                color: v.$low-contrast-text-color-light;
+            }
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+
+            li {
+                font-size: 1.6rem;
+                line-height: 1.8;
+                color: v.$low-contrast-text-color-dark;
+                margin-bottom: 0.8rem;
+                transition: color 0.3s ease;
+
+                .light-mode & {
+                    color: v.$low-contrast-text-color-light;
+                }
+            }
+        }
+
+        em {
+            font-style: italic;
+            color: v.$low-contrast-text-color-dark;
+
+            .light-mode & {
+                color: v.$low-contrast-text-color-light;
+            }
+        }
+    }
+
+    &__back {
+        text-align: center;
+    }
+
+    &__back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2rem;
+        background-color: v.$ui-element-background-color-dark;
+        border: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
+        border-radius: 1.2rem;
+        color: v.$high-contrast-text-color-dark;
+        font-size: 1.6rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        .light-mode & {
+            background-color: v.$ui-element-background-color-light;
+            border-color: v.$subtle-borders-and-separators-color-light;
+            color: v.$high-contrast-text-color-light;
+        }
+
+        &:hover {
+            transform: translateY(-0.4rem);
+            border-color: v.$ui-element-border-and-focus-rings-color-dark;
+            background-color: v.$hovered-ui-element-background-color-dark;
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
+
+            .light-mode & {
+                border-color: v.$ui-element-border-and-focus-rings-color-light;
+                background-color: v.$hovered-ui-element-background-color-light;
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
+            }
+        }
+    }
 }
 
 @media (min-width: 768px) {
+    .header {
+        &__nav {
+            display: flex;
+        }
+    }
+
     .skills {
         &__list {
             grid-template-columns: repeat(3, 1fr);
@@ -689,9 +1678,35 @@ body {
         }
     }
 
+    .journey {
+        &__timeline {
+            padding-left: 4rem;
+        }
+
+        &__item {
+            padding-left: 5rem;
+        }
+
+        &__content {
+            padding: 2.5rem;
+        }
+    }
+
     .projects {
         &__grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    // iPad/Tablette : afficher shape--1, shape--2 et shape--3 (3 shapes)
+    .shape {
+        &--3 {
+            display: block;
+        }
+
+        &--4,
+        &--5 {
+            display: none;
         }
     }
 }
@@ -729,7 +1744,7 @@ body {
 
         &__text {
             flex: 1;
-            min-width: 300px;
+            min-width: 30rem;
             align-items: flex-start;
         }
 
@@ -740,6 +1755,19 @@ body {
 
         &__image-wrapper {
             margin: 0;
+        }
+
+        &__links {
+            justify-content: start;
+        }
+    }
+
+    .journey {
+        width: 86vw;
+        max-width: 128rem;
+
+        &__timeline {
+            max-width: 90rem;
         }
     }
 
@@ -755,7 +1783,7 @@ body {
         }
 
         &__list {
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
         }
     }
 
@@ -769,6 +1797,23 @@ body {
 
         &__grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    // Desktop : afficher toutes les shapes (5 shapes)
+    .shape {
+        &--3,
+        &--4,
+        &--5 {
+            display: block;
+        }
+    }
+
+    .footer {
+        &__container {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
         }
     }
 }
