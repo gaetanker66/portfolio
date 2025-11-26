@@ -913,6 +913,7 @@ body {
         position: relative;
         margin-bottom: 4rem;
         padding-left: 4rem;
+        transition: opacity 0.3s ease, transform 0.3s ease;
 
         &--last {
             margin-bottom: 0;

@@ -54,10 +54,27 @@
       threshold: 0.1
     });
 
+    // Observer pour les items de timeline avec délai
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animated');
+          }, index * ANIMATION_DELAY);
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: ROOT_MARGIN,
+      threshold: 0.1
+    });
+
     // Appliquer les animations aux sections
     const heroSection = document.querySelector('.hero');
     const skillsSection = document.querySelector('.skills');
     const projectsSection = document.querySelector('.projects');
+    const journeySection = document.querySelector('.journey');
 
     if (heroSection) {
       heroSection.classList.add('animate-on-scroll', 'fade-in-up');
@@ -74,6 +91,11 @@
       sectionObserver.observe(projectsSection);
     }
 
+    if (journeySection) {
+      journeySection.classList.add('animate-on-scroll', 'fade-in-up');
+      sectionObserver.observe(journeySection);
+    }
+
     // Appliquer les animations aux cartes de projets
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
@@ -86,6 +108,13 @@
     skillItems.forEach(item => {
       item.classList.add('animate-on-scroll', 'fade-in');
       skillObserver.observe(item);
+    });
+
+    // Appliquer les animations aux items de timeline
+    const journeyItems = document.querySelectorAll('.journey__item');
+    journeyItems.forEach(item => {
+      item.classList.add('animate-on-scroll', 'fade-in-up');
+      timelineObserver.observe(item);
     });
   }
 
