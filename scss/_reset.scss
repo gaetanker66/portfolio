@@ -1,0 +1,91 @@
+// Reset CSS moderne
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+}
+
+// Suppression des styles par défaut des listes
+ul,
+ol {
+  list-style: none;
+}
+
+// Images responsives
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Suppression des styles par défaut des liens
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Suppression des styles par défaut des boutons
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+// Suppression des styles par défaut des inputs
+input,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+// Suppression des styles par défaut des titres
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
+// Suppression des marges par défaut des paragraphes
+p {
+  margin: 0;
+}
+
+// Tableaux
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Code
+code,
+kbd,
+samp,
+pre {
+  font-family: monospace;
+}
+
