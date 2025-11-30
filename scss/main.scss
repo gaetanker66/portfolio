@@ -2,18 +2,27 @@
 @use 'variables' as v;
 @use 'reset';
 
+@import url('https://fonts.googleapis.com/css2?family=Liter&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&family=Liter&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 // Styles de base
 html {
     font-size: 62.5%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Encode Sans', sans-serif;
+}
+
 body {
     font-size: 1.8rem;
+    font-family: 'Liter', 'Montserrat', sans-serif;
     background-color: v.$app-background-color-dark;
     color: v.$high-contrast-text-color-dark;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
     overflow-x: hidden;
+    padding-top: 8rem;
 
     &.light-mode {
         background-color: v.$app-background-color-light;
@@ -292,8 +301,11 @@ body {
 
 // Header
 .header {
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 150;
     padding: 1rem 2rem;
     background-color: v.$ui-element-background-color-dark;
     border-bottom: 0.1rem solid v.$subtle-borders-and-separators-color-dark;
@@ -520,6 +532,7 @@ body {
     &__subtitle {
         font-size: 3.5rem;
         font-weight: 400;
+        font-family: 'Encode Sans', sans-serif;
         color: v.$low-contrast-text-color-dark;
         line-height: 1.6;
         margin-bottom: 2rem;
@@ -681,12 +694,12 @@ body {
         }
 
         &--active {
-            background-color: v.$solid-backgrounds-color-dark;
+            background-color: v.$ui-element-border-and-focus-rings-color-dark;
             color: v.$high-contrast-text-color-dark;
             box-shadow: 0 0.2rem 0.8rem rgba(0, 144, 255, 0.3);
 
             .light-mode & {
-                background-color: v.$solid-backgrounds-color-light;
+                background-color: v.$ui-element-border-and-focus-rings-color-light;
                 color: v.$high-contrast-text-color-light;
                 box-shadow: 0 0.2rem 0.8rem rgba(0, 144, 255, 0.2);
             }
@@ -868,22 +881,26 @@ body {
 
     &__timeline {
         position: relative;
-        max-width: 80rem;
+        max-width: 120rem;
         margin: 0 auto;
-        padding-left: 3rem;
+        display: flex;
+        gap: 4rem;
+        padding: 2rem 0;
 
         &::before {
             content: '';
             position: absolute;
-            left: 1.5rem;
+            left: 50%;
             top: 0;
             bottom: 0;
             width: 0.2rem;
+            transform: translateX(-50%);
             background: linear-gradient(180deg, 
                 v.$ui-element-border-and-focus-rings-color-dark 0%, 
                 rgba(0, 144, 255, 0.3) 50%,
                 v.$ui-element-border-and-focus-rings-color-dark 100%);
             transition: background 0.3s ease;
+            z-index: 1;
 
             .light-mode & {
                 background: linear-gradient(180deg, 
@@ -892,19 +909,31 @@ body {
                     v.$ui-element-border-and-focus-rings-color-light 100%);
             }
         }
+    }
 
-        &::after {
-            content: '▼';
-            position: absolute;
-            left: 1.2rem;
-            bottom: -2rem;
-            font-size: 1.6rem;
-            color: v.$ui-element-border-and-focus-rings-color-dark;
-            animation: bounce 2s infinite;
+    &__column {
+        flex: 1;
+        position: relative;
+
+        &--left {
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        &--right {
+            text-align: left;
+            padding-left: 2rem;
+        }
+
+        &-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: v.$high-contrast-text-color-dark;
+            margin-bottom: 3rem;
             transition: color 0.3s ease;
 
             .light-mode & {
-                color: v.$ui-element-border-and-focus-rings-color-light;
+                color: v.$high-contrast-text-color-light;
             }
         }
     }
@@ -912,18 +941,23 @@ body {
     &__item {
         position: relative;
         margin-bottom: 4rem;
-        padding-left: 4rem;
         transition: opacity 0.3s ease, transform 0.3s ease;
 
         &--last {
             margin-bottom: 0;
         }
+
+        .journey__column--left & {
+            padding-right: 2rem;
+        }
+
+        .journey__column--right & {
+            padding-left: 2rem;
+        }
     }
 
     &__marker {
         position: absolute;
-        left: -1.5rem;
-        top: 0.5rem;
         width: 1.6rem;
         height: 1.6rem;
         border-radius: 50%;
@@ -932,6 +966,15 @@ body {
         box-shadow: 0 0 0 0.4rem v.$ui-element-background-color-dark;
         transition: all 0.3s ease;
         z-index: 2;
+        top: 0.5rem;
+
+        .journey__column--left & {
+            right: -3.2rem;
+        }
+
+        .journey__column--right & {
+            left: -3.2rem;
+        }
 
         .light-mode & {
             background-color: v.$ui-element-background-color-light;
@@ -966,7 +1009,6 @@ body {
         }
 
         .journey__item:hover & {
-            transform: translateX(0.5rem);
             border-color: v.$ui-element-border-and-focus-rings-color-dark;
             box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
 
@@ -974,6 +1016,14 @@ body {
                 border-color: v.$ui-element-border-and-focus-rings-color-light;
                 box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.1);
             }
+        }
+
+        .journey__column--left .journey__item:hover & {
+            transform: translateX(-0.5rem);
+        }
+
+        .journey__column--right .journey__item:hover & {
+            transform: translateX(0.5rem);
         }
     }
 
@@ -1157,7 +1207,7 @@ body {
     &__tag {
         display: inline-block;
         padding: 0.5rem 1rem;
-        background-color: v.$solid-backgrounds-color-dark;
+        background-color: v.$ui-element-border-and-focus-rings-color-dark;
         color: v.$high-contrast-text-color-dark;
         border-radius: 0.8rem;
         font-size: 1.4rem;
@@ -1165,16 +1215,16 @@ body {
         transition: all 0.3s ease;
 
         .light-mode & {
-            background-color: v.$solid-backgrounds-color-light;
+            background-color: v.$ui-element-border-and-focus-rings-color-light;
             color: v.$high-contrast-text-color-light;
         }
 
         &:hover {
-            background-color: v.$hovered-solid-backgrounds-color-dark;
+            background-color: v.$subtle-borders-and-separators-color-dark;
             transform: scale(1.05);
 
             .light-mode & {
-                background-color: v.$hovered-solid-backgrounds-color-light;
+                background-color: v.$subtle-borders-and-separators-color-light;
             }
         }
     }
@@ -1201,7 +1251,7 @@ body {
         align-items: center;
         justify-content: center;
         padding: 0.8rem 1.6rem;
-        background-color: v.$solid-backgrounds-color-dark;
+        background-color: v.$ui-element-border-and-focus-rings-color-dark;
         color: v.$high-contrast-text-color-dark;
         border: none;
         border-radius: 0.8rem;
@@ -1213,17 +1263,17 @@ body {
         white-space: nowrap;
 
         .light-mode & {
-            background-color: v.$solid-backgrounds-color-light;
+            background-color: v.$ui-element-border-and-focus-rings-color-light;
             color: v.$high-contrast-text-color-light;
         }
 
         &:hover {
-            background-color: v.$hovered-solid-backgrounds-color-dark;
+            background-color: v.$subtle-borders-and-separators-color-dark;
             transform: translateY(-0.2rem);
             box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.3);
 
             .light-mode & {
-                background-color: v.$hovered-solid-backgrounds-color-light;
+                background-color: v.$subtle-borders-and-separators-color-light;
                 box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
             }
         }
@@ -1657,6 +1707,51 @@ body {
     }
 }
 
+@media (max-width: 767px) {
+    .journey {
+        &__timeline {
+            flex-direction: column;
+            gap: 2rem;
+
+            &::before {
+                left: 2rem;
+                transform: none;
+            }
+        }
+
+        &__column {
+            &--left {
+                text-align: left;
+                padding-right: 0;
+                padding-left: 4rem;
+            }
+
+            &--right {
+                padding-left: 4rem;
+            }
+        }
+
+        &__marker {
+            .journey__column--left &,
+            .journey__column--right & {
+                left: -3.2rem;
+                right: auto;
+            }
+        }
+
+        &__item {
+            .journey__column--left & {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .journey__column--right & {
+                padding-left: 0;
+            }
+        }
+    }
+}
+
 @media (min-width: 768px) {
     .header {
         &__nav {
@@ -1681,15 +1776,7 @@ body {
 
     .journey {
         &__timeline {
-            padding-left: 4rem;
-        }
-
-        &__item {
-            padding-left: 5rem;
-        }
-
-        &__content {
-            padding: 2.5rem;
+            flex-direction: row;
         }
     }
 
@@ -1768,7 +1855,7 @@ body {
         max-width: 128rem;
 
         &__timeline {
-            max-width: 90rem;
+            max-width: 120rem;
         }
     }
 
