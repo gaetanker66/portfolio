@@ -8,6 +8,8 @@
 // Styles de base
 html {
     font-size: 62.5%;
+    scroll-padding-top: 8rem; // Compense la hauteur du header fixe lors du scroll vers les ancres
+    scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -393,6 +395,7 @@ body {
         color: v.$high-contrast-text-color-dark;
         transition: color 0.3s ease, transform 0.2s ease;
         cursor: pointer;
+        border-radius: 0.8rem;
 
         .light-mode & {
             color: v.$high-contrast-text-color-light;
@@ -403,6 +406,18 @@ body {
             transform: scale(1.1);
 
             .light-mode & {
+                color: v.$solid-backgrounds-color-light;
+            }
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid v.$ui-element-border-and-focus-rings-color-dark;
+            outline-offset: 0.2rem;
+            color: v.$solid-backgrounds-color-dark;
+            transform: scale(1.1);
+
+            .light-mode & {
+                outline-color: v.$ui-element-border-and-focus-rings-color-light;
                 color: v.$solid-backgrounds-color-light;
             }
         }
@@ -493,7 +508,7 @@ body {
         margin-bottom: 1.5rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 1rem;
         justify-content: center;
     }
 
@@ -580,6 +595,22 @@ body {
             box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
 
             .light-mode & {
+                border-color: v.$ui-element-border-and-focus-rings-color-light;
+                background-color: v.$hovered-ui-element-background-color-light;
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
+            }
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid v.$ui-element-border-and-focus-rings-color-dark;
+            outline-offset: 0.2rem;
+            transform: translateY(-0.4rem);
+            border-color: v.$ui-element-border-and-focus-rings-color-dark;
+            background-color: v.$hovered-ui-element-background-color-dark;
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
+
+            .light-mode & {
+                outline-color: v.$ui-element-border-and-focus-rings-color-light;
                 border-color: v.$ui-element-border-and-focus-rings-color-light;
                 background-color: v.$hovered-ui-element-background-color-light;
                 box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.15);
@@ -710,6 +741,19 @@ body {
             color: v.$high-contrast-text-color-dark;
 
             .light-mode & {
+                background-color: v.$hovered-ui-element-background-color-light;
+                color: v.$high-contrast-text-color-light;
+            }
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid v.$ui-element-border-and-focus-rings-color-dark;
+            outline-offset: 0.2rem;
+            background-color: v.$hovered-ui-element-background-color-dark;
+            color: v.$high-contrast-text-color-dark;
+
+            .light-mode & {
+                outline-color: v.$ui-element-border-and-focus-rings-color-light;
                 background-color: v.$hovered-ui-element-background-color-light;
                 color: v.$high-contrast-text-color-light;
             }
@@ -1143,7 +1187,7 @@ body {
 
     &__image-wrapper {
         width: 100%;
-        height: 20rem;
+        height: 25rem;
         overflow: hidden;
         background-color: v.$subtle-background-color-dark;
         position: relative;
@@ -1273,6 +1317,20 @@ body {
             box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.3);
 
             .light-mode & {
+                background-color: v.$subtle-borders-and-separators-color-light;
+                box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
+            }
+        }
+
+        &:focus-visible {
+            outline: 0.3rem solid v.$ui-element-border-and-focus-rings-color-dark;
+            outline-offset: 0.2rem;
+            background-color: v.$subtle-borders-and-separators-color-dark;
+            transform: translateY(-0.2rem);
+            box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.3);
+
+            .light-mode & {
+                outline-color: v.$ui-element-border-and-focus-rings-color-light;
                 background-color: v.$subtle-borders-and-separators-color-light;
                 box-shadow: 0 0.4rem 1.2rem rgba(0, 144, 255, 0.2);
             }

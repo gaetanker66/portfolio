@@ -5,44 +5,51 @@
   // Données des projets avec leurs images et liens
   const projectsData = {
     1: {
-      title: 'Application E-Commerce',
+      title: 'MDCS',
       images: [
-        'images/1.jpg',
-        'images/2.jpg'
+        'images/MDCS-1-min.jpg',
+        'images/MDCS-2-min.jpg',
+        'images/MDCS-3-min.jpg',
+        'images/MDCS-4-min.jpg',
+        'images/MDCS-5-min.jpg'
       ],
-      siteUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example/project1'
+      siteUrl: 'https://mdcs.gaetan-kervarec.fr',
+      githubUrl: null
     },
     2: {
-      title: 'Dashboard Analytics',
+      title: 'Like Auto',
       images: [
-        'images/1.jpg',
-        'images/2.jpg',
-        'images/3.jpg'
+        'images/like-auto-1-min.jpg',
+        'images/like-auto-2-min.jpg',
+        'images/like-auto-3-min.jpg',
+        'images/like-auto-4-min.jpg',
+        'images/like-auto-5-min.jpg',
+        'images/like-auto-6-min.jpg',
+        'images/like-auto-7-min.jpg',
+        'images/like-auto-8-min.jpg'
       ],
-      siteUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example/project2'
+      siteUrl: 'https://likeauto.fr/',
+      githubUrl: 'https://github.com/B-now/like-auto'
     },
     3: {
-      title: 'Site WordPress Custom',
+      title: 'Art et Culture',
       images: [
-        'images/1.jpg',
-        'images/2.jpg',
-        'images/3.jpg',
-        'images/4.webp'
+        'images/art-et-culture-1-min.jpg',
+        'images/art-et-culture-2-min.jpg',
+        'images/art-et-culture-3-min.jpg',
+        'images/art-et-culture-4-min.jpg'
       ],
-      siteUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example/project3'
+      siteUrl: 'https://artetculture66.fr/',
+      githubUrl: 'https://github.com/gaetanker66/art-et-culture'
     },
     4: {
-      title: 'API RESTful',
+      title: 'Sainte-Marie-la-Mer',
       images: [
-        'images/1.jpg',
-        'images/2.jpg',
-        'images/3.jpg',
-        'images/4.webp'
+        'images/sainte-marie-la-mer-1-min.jpg',
+        'images/sainte-marie-la-mer-2-min.jpg',
+        'images/sainte-marie-la-mer-3-min.jpg'
       ],
-      siteUrl: 'https://example.com',
+      siteUrl: 'https://www.saintemarielamer.com/',
       githubUrl: 'https://github.com/example/project4'
     }
   };
